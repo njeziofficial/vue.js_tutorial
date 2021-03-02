@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>You are <strong>{{level}}</strong> </h1>
+                <hr>
+                <h3>Current XP: {{xp}} </h3>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-danger btn-block" @click="ReduceXp"><span
+                                class="glyphicon glyphicon-collapse-up"></span> Reduce XP</button>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block" @click="AddXp"><span
+                                    class="glyphicon glyphicon-collapse-up"></span> Add XP</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            xp: 10
+        },
+        methods: {
+            AddXp: function () {
+                return this.xp += 10
+            },
+            ReduceXp: function () {
+                return this.xp -= 10
+            }
+        },
+        computed: {
+            level: function () {
+                if (this.xp <= 0) {
+                    return 'Banned!!!'
+                } else if (this.xp <= 100) {
+                    return 'a Begineer';
+                } else if (this.xp >= 101 && this.xp <= 200) {
+                    return 'an Intermediate'
+                } else {
+                    return 'an Expert'
+                }
+            }
+        }
+
+    })
+</script>
+
+</html>

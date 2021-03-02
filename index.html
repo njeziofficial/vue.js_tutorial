@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Hello {{fullname}} </h1>
+                <ul class="text-left">
+                    <li>First Name: {{first}} </li>
+                    <li>Last Name: {{last}} </li>
+                </ul>
+                <hr/>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>First Name:</label>
+                    <input type="text" class="form-control" v-model="first">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Last Name:</label>
+                    <input type="text" class="form-control" v-model="last">
+                </div>
+            </div>
+        </div>              
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            first: '',
+            last: ""
+        },
+        computed: {
+            fullname: function() {
+                //return this.first + " " + this.Last
+                return `${this.first} ${this.last}`
+            }
+        }
+    })
+</script>
+
+</html>
